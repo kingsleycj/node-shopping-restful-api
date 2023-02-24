@@ -2,14 +2,23 @@ const express = require('express');
 const app = express(); 
 const morgan = require('morgan');
 const bodyParser = require('body-parser')
-
+const mongoose = require('mongoose')
+const dotenv = require("dotenv");
+dotenv.config();
 const productRoutes = require('./src/routes/products');
 const orderRoutes = require("./src/routes/orders");
-
 
 app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+mongoose.connect(process.env.MONGO_ATLAS_DB, {
+        // useMongoClient: true,
+        // useNewUrlParser: true,
+        // useCreateIndex: true,
+    })
+    .then(() => console.log("MongoDB connected..."))
+    .catch((err) => console.log(err));
 
 app.use((req, res, next) => {
     res.header( 'Access-Control-Allow-Origin' , '*' );
