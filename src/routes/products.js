@@ -127,8 +127,12 @@ router.delete("/:productId", (req, res, next) => {
         res.status(200).json({
             message: "product deleted successfully",
             request: {
-                type: "DELETE",
-                url: "http://localhost:3000/products/" + id,
+                type: "POST",
+                url: "http://localhost:3000/products/" ,
+                body: {
+                    name: "String",
+                    price: "Number"
+                }
             }
         });
     })

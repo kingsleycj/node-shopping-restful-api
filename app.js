@@ -3,6 +3,7 @@ const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
+require("mongodb");
 const dotenv = require("dotenv");
 dotenv.config();
 const productRoutes = require('./src/routes/products');
@@ -14,13 +15,11 @@ app.use(bodyParser.json());
 
 mongoose.set("strictQuery", true);
 mongoose.connect(process.env.MONGO_ATLAS_DB, {
-        // useMongoClient: true,
-        // useNewUrlParser: true,
-        // useCreateIndex: true,
     })
     .then(() => console.log("MongoDB connected..."))
     .catch((err) => console.log(err));
 
+mongoose.Promise = global.Promise;
 app.use((req, res, next) => {
     res.header( 'Access-Control-Allow-Origin' , '*' );
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content, Accept, Authorization");
