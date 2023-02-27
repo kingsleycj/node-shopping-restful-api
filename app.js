@@ -12,6 +12,7 @@ app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+mongoose.set("strictQuery", true);
 mongoose.connect(process.env.MONGO_ATLAS_DB, {
         // useMongoClient: true,
         // useNewUrlParser: true,
