@@ -9,6 +9,9 @@ router.post("/signup", userController.createUser );
 // User login and validation
 router.post("/login", userController.userLogin)
 
+// fetch a single user
+router.get("/:userId", userController.fetchSingleUserById )
+
 // delete a user
 router.delete("/:userId", checkAuth, userController.deleteUser)
 

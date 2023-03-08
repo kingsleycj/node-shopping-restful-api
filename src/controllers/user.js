@@ -105,3 +105,29 @@ exports.deleteUser = (req, res, next) => {
       });
     });
 };
+
+exports.fetchSingleUserById = (req, res) => {
+  User.findOne({ _id: req.params.userId })
+    .exec()
+    .then((doc) => {
+      console.log("From database:", doc);
+      if (doc) {
+        res.status(200).json({
+          message: "User fetched successfully",
+          fetchedUser: {
+            _id: req.params.userId,
+            username: doc.username,
+            email: doc.email,
+          },
+        });
+      } else {
+        res
+          .status(401)
+          .json({ message: "No valid entry found for provided ID" });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ error: err });
+    });
+};
