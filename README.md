@@ -20,3 +20,19 @@ This is a simple node shopping rest api that has three (3) resources; ORDER, PRO
 
 * [Live Link](www.render.com)
 
+### Installation Guide
+
+* [Clone the repository](https://github.com/kingsleycj/node-shopping-restful-api.git)
+* Run `npm install` to install all dependencies
+* Create a .env file to store all your variables
+
+### How to Run
+
+1. Run `npm start` to start the server, OR
+2. Run `npm run dev` to start with nodemon(and make updates)
+3. Connect to the API using postman on Port 4000
+
+### Author 
+[Kingsley CJ](https://github.com/kingsleycj)
+
+
