@@ -18,7 +18,7 @@ This is a simple node shopping rest api that has three (3) resources; ORDER, PRO
 
 ### Links
 
-* [Live Link](www.render.com)
+* [Live Link](https://order-it.onrender.com)
 
 ### Installation Guide
 
