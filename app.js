@@ -14,7 +14,7 @@ const userRoutes = require('./src/routes/users')
 app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
- 
+
 mongoose.set("strictQuery", true);
 mongoose.connect(process.env.MONGO_ATLAS_DB, {
     })
@@ -46,9 +46,7 @@ app.use( (req, res, next) => {
 app.use((error, req, res, next) => {
     res.status(error.status || 500); 
     res.json({
-        error: {
-            message: error.message 
-        }
+        error: { message: error.message }
     });
 });
 
